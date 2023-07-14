@@ -18,7 +18,7 @@ router.post('/notes', async (req, res) => {
     // // Read db.json parse out data
     const notes = await JSON.parse(fs.readFileSync("./db/db.json"))
     // // Use uuid to give new note a unique identifier
-    uuid.parse(newNote);
+    uuid.v4(newNote);
     // // use .push to add to parsed data
     notes.push(newNote)
     // // write to db.json with new data & strigify
@@ -26,15 +26,15 @@ router.post('/notes', async (req, res) => {
     // // res.json the note that came in from the body
     res.json(newNote)
     // fs.writeFile
-    fs.writeFile('db.json', newNote);
+    fs.writeFile('./db/db.json', newNote);
 });
 
-router.delete('/notes/:id', async (req, res) => {
-    fs.readFile("./db/db.json")
-    notes.destroy({
+// router.delete('/notes/:id', async (req, res) => {
+//     fs.readFile("./db/db.json")
+//     notes.destroy({
         
-    })
-})
+//     })
+// })
 
 
 
